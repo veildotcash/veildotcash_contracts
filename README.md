@@ -1,47 +1,10 @@
-# Veil Validator Setup and Testing Guide
+#  Veil.Cash
 
-## Prerequisites
+Veil Cash is a non-custodial privacy protocol deployed on the Base Layer 2 (L2) blockchain. It leverages zk-SNARKs (Zero-Knowledge Succinct Non-Interactive Arguments of Knowledge) to enable users to achieve on-chain privacy and anonymity within trusted pools.
 
-- [Foundry](https://book.getfoundry.sh/getting-started/installation)
-- Node.js and npm
-
----
-
-## Installation Steps
-
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd <repository-folder>
-   ```
-2. Install Foundry dependencies:
-   ```bash
-   forge install
-   ```
-3. Install Node.js dependencies:
-   ```bash
-   npm install
-   ```
-
----
-
-## Running Tests
-
-- **Run all tests:**
-  ```bash
-  forge clean && forge build && forge test
-  ```
-- **Run a single test:**
-  ```bash
-  forge clean && forge build && forge test --match-test <testName>
-  ```
-
----
-
-## Veil Cash Overview
+## Overview
 
 Veil is a fork of Tornado Cash with several key changes:
-- Merge of Tornado.sol + ETHTornado.sol (https://github.com/tornadocash/tornado-core) + (https://github.com/nkrishang/tornado-cash-rebuilt)
 - Deposits can only be made through the proxy contract (`VeilValidator.sol`).
 - Withdrawals are handled at the pool contracts following Tornado Cash protocol.
 - Deposits are **not** allowed directly at the pool contracts.
@@ -56,8 +19,6 @@ Veil is a fork of Tornado Cash with several key changes:
 
 ### Validator Contracts
 - **Validator Proxy:** `0xdFEc9441C1827319538CCCDEEEDfbdAa66295792`
-- **Validator Implementation:** `0xb2E6D312c6378a4b9847A79F0947Ce651F0e8DF3`
-- **Validator Admin:** `0x2DC1e210D48582a1266863D247387Be45C378914`
 
 ### Pool Contracts
 - **VEIL 0.0005 ETH Contract:** `0x6c206B5389de4e5a23FdF13BF38104CE8Dd2eD5f`
@@ -71,24 +32,10 @@ Veil is a fork of Tornado Cash with several key changes:
 - **Verifier Contract:** `0x1E65C075989189E607ddaFA30fa1a0001c376cfd`
 
 ---
+## Links
 
-## Project Structure
+**Website:**  [Veil Cash](https://veil.cash)
 
-1. **Main Contract:** `src/proxy/VeilValidator.sol`
-2. **Pool Contracts:** `src/pools/`
-3. **Test Suite:** `test/proxy/`
-4. **Supporting Scripts:** Located in `forge-ffi-scripts/`
-   - **`generateWitness.js`**: Generates witness data for zero-knowledge proofs during withdrawal.
-   - **`generateCommitment.js`**: Generates commitment data for deposits.
+**Docs:**  [Gitbook Docs](https://docs.veil.cash)
 
----
-
-## Key Notes 
-
-- **Fork Origin:** Tornado Cash L2 deployment (Arbitrum).
-- **Modified Deposit Logic:** Deposits are restricted to the proxy contract.
-- **Additional Features:**
-  - Extra logging and commitment capturing.
-  - Verification of user eligibility through EAS or whitelisting.
-
----
+**Twitter / X:**  [@veildotcash](https://x.com/veildotcash)
